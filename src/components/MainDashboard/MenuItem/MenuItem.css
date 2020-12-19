@@ -1,0 +1,27 @@
+/* .MuiListItemText-root {
+    text-decoration: none;
+    color: #2d2d2d;
+} */
+
+ul.MuiList-root.MuiList-padding {
+    height: 100vh;
+}
+
+/* #setting {
+    margin-left: -0.8rem;
+} */
+
+.MuiButtonBase-root.MuiListItem-root.makeStyles-nested-32.MuiListItem-gutters.MuiListItem-button {
+    padding-left: 22px;
+}
+
+/* .MuiListItemIcon-root {
+    color: #2d2d2d !important;
+}
+svg.MuiSvgIcon-root {
+    color: #4195D1;
+}
+.listitem:hover {
+    color: 'red'
+} */
+

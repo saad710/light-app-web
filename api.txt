@@ -1,0 +1,144 @@
+<?php
+
+use App\Http\Controllers\AppProvider\AdminController;
+use App\Http\Controllers\AppProvider\ClientController;
+use App\Http\Controllers\AppProvider\LoginController;
+use App\Http\Controllers\AppProvider\TicketController;
+use App\Http\Controllers\ClientApp\PaymentController;
+use App\Http\Controllers\CustomerApp\CustomerController;
+use App\Http\Controllers\MailController;
+use App\Http\Controllers\GroupController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\CompanyController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+Route::get('mail-data',[\App\Http\Controllers\HomeController::class,'testClient']);
+//Admin API.....................................................................................
+Route::post('/admin-login',[LoginController::class,'adminLogin']);
+Route::post('/admin-logout',[LoginController::class,'adminLogout']);
+Route::post('/admin-create',[AdminController::class,'createAdmin']);
+Route::get('/all-admin',[AdminController::class,'getAllAdmins']);
+Route::get('/admin-view/{admin_id}',[AdminController::class,'getAdmin']);
+Route::delete('/admin-remove/{admin_id}',[AdminController::class,'removeAdmin']);
+Route::put('/customer-password-approval/{id}',[\App\Http\Controllers\PasswordChangeController::class,'adminApprovalYes']);
+Route::put('/customer-password-decline/{id}',[\App\Http\Controllers\PasswordChangeController::class,'adminApprovalNo']);
+
+//CustomerAuth API.................................................................................
+Route::post('/customer-login',[LoginController::class, 'customerLoginApi']);
+Route::post('/customer-logout',[LoginController::class, 'customerLogoutApi']);
+Route::post('/create-customer', [CustomerController::class, 'createCustomerApi']);
+Route::get('/specific-customer/{customer_id}',[CustomerController::class,'specificCustomer']);
+Route::get('/customers/',[CustomerController::class,'getAllCustomer']);
+Route::put('/change-status/{customer_id}',[CustomerController::class,'changeStatus']);
+Route::delete('/customer-delete/{customer_id}',[CustomerController::class,'removeCustomer']);
+Route::put('/update-customer/{customer_id}',[CustomerController::class,'updateCustomerDetailsApi']);
+//Route::put('change-password/{id}',[CustomerController::class,'passwordChange']);
+Route::get('/get-token',[CustomerController::class,'getToken']);
+Route::put('/create-new-password/{email}', [LoginController::class,'createNewPassword']);
+
+Route::post('/reply-mail-to-client/',[MailController::class,'replyMailToClientApi']);
+Route::get('/get-customer-mail/{customer_id}',[MailController::class,'getCustomerMail']);
+Route::get('/get-specific-customer-mail/{direct_mail_id}',[MailController::class,'getSpecificCustomerMail']);
+Route::post('/password-change-request/',[\App\Http\Controllers\PasswordChangeController::class,'changePasswordApi']);
+Route::put('/change-password/',[\App\Http\Controllers\PasswordChangeController::class,'passwordUpdateApi']);
+Route::delete('/customer-trash/{customer}',[CustomerController::class,'trashCustomer']);
+Route::post('/reset-password', [LoginController::class,'resetPasswordApi']);
+Route::post('/token-check',[LoginController::class,'tokenCheckApi']);
+Route::put('/create-new-password/{email}', [LoginController::class,'createNewPasswordApi']);
+                                            
+                                            
+                                            
+                                          ********  Client api ********
+
+
+Route::post('/client-login',[LoginController::class, 'clientLogin']);
+Route::post('/client-logout',[LoginController::class, 'clientLogout']);
+Route::get('/clients',[ClientController::class,'getAllClients']);
+Route::Post('/client-create', [ClientController::class, 'createClient']);
+Route::Put('/client-update/{client_id}',[ClientController::class,'updateClient']);
+Route::get('/specific-client/{client_id}',[ClientController::class,'specificClient']);
+Route::delete('/client-delete/{client_id}',[ClientController::class,'removeClient']);
+Route::post('/client-generate-bill',[ClientController::class, 'generateBill']);
+Route::get('/client-billing/{id}',[ClientController::class, 'getBillingData']);
+Route::get('/client-shipping/{id}',[ClientController::class, 'getShippingData']);
+
+Route::post('/send-mail-customer',[MailController::class,'sendMailToCustomer']);
+Route::post('/reply-mail-to-customer/',[MailController::class,'replyMailToCustomer']);
+Route::get('/get-specific-client-mail/{direct_mail_id}',[MailController::class,'getSpecificClientMail']);
+Route::get('/count-total-reply/{direct_mail_id}',[MailController::class,'countReplyMail']);
+Route::get('/count-total-client-mail/{client_id}',[MailController::class,'countSpecificClientMail']);
+Route::get('/count-direct-mail/',[MailController::class,'countDirectMail']);
+Route::get('/count-total-customer-mail/{customer_id}',[MailController::class,'countSpecificCustomerMail']);
+
+
+
+//Ticket
+Route::get('/all-ticket',[TicketController::class,'getTicket']);
+Route::post('/create-ticket',[TicketController::class,'createTicket']);
+Route::put('/change-ticket-status/{ticket_id}',[TicketController::class,'changeTicketStatus']);
+//payment
+Route::post('/store-payment',[PaymentController::class,'storePayment']);
+Route::get('/get-payment/{payment_id}',[PaymentController::class,'getPaymentById']);
+Route::get('/get-client-payment/{client_id}',[PaymentController::class,'getPaymentById']);
+Route::get('/get-payment-package',[PaymentController::class,'getPaymentPackages']);
+Route::get('/get-payment-package/{name}',[PaymentController::class,'getPaymentPackageByName']);
+
+//invoice
+Route::get('/invoice-table/{client_id}',[ClientController::class,'invoiceTableData']);
+Route::get('/invoice-view/{payment_id}',[ClientController::class,'invoiceViewData']);
+// Route::get('/all-invoice',[ClientController::class,'allInvoice']);
+Route::get('/invoice-all',[ClientController::class,'invoiceAllData']); //invoice all data get
+
+[[                         *********** Group Crud Done ***********
+            Route::post('/create-group',[GroupController::class,'createGroup']);
+            Route::get('/group-all',[GroupController::class,'getAllGroups']);
+            Route::Put('/group-update/{id}',[GroupController::class,'updateGroup']);
+            Route::delete('/group-delete/{id}',[GroupController::class,'removeGroup']);
+            Route::get('/group/{id}',[GroupController::class,'getGroup']);
+]]
+
+[[                      *********** Tag Done ***********
+        Route::post('/create-tag',[TagController::class,'addTag']);
+        Route::get('/tag-all',[TagController::class,'tagList']);
+        Route::Put('/tag-update/{tagname}',[TagController::class,'tagUpdate']);
+        Route::delete('/tag-delete/{tagname}',[TagController::class,'tagDelete']);
+        Route::get('/tag-edit/{tagname}',[TagController::class,'tagEdit']);
+]]
+
+//Signature
+Route::post('/create-signature',[\App\Http\Controllers\SignatureController::class,'addSignature']);
+Route::get('/all-signature',[\App\Http\Controllers\SignatureController::class,'signatureList']);
+Route::get('/edit-signature/{signature}',[\App\Http\Controllers\SignatureController::class,'signatureEdit']);
+Route::Put('/update-signature/{signature}',[\App\Http\Controllers\SignatureController::class,'signatureUpdate']);
+Route::delete('/delete-signature/{signature}',[\App\Http\Controllers\SignatureController::class,'signatureDelete']);
+
+//company
+Route::post('/create-company',[\App\Http\Controllers\CompanyController::class,'createCompany']);
+Route::get('/all-company',[\App\Http\Controllers\CompanyController::class,'getAllCompany']);
+
+//Schedule mail update
+Route::post('/update-schedule/{schedule_mail_id}',[MailController::class,'scheduleUpdate']);
+
+
+//testclient
+Route::get('mail-data',[\App\Http\Controllers\HomeController::class,'testClient']);
+
+
+//getreplyremainder
+Route::get('/reply-remainder/{id}',[\App\Http\Controllers\HomeController::class,'getRemainderReply']);
+
+//search by name
+Route::get('/search/{name}',[\App\Http\Controllers\HomeController::class,'search']);

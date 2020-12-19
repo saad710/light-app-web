@@ -1,0 +1,91 @@
+-------------------
+Client App:
+-------------------
+All client: /clients
+Specific Client: /specific-client/{client_id}
+Client Login: /client-login
+Client Logout: /client-logout
+Create New Client: /client-create
+Update Client's Info: /client-update/{client_id}
+Delete Specific Client: /client-delete/{client_id}
+Create Ticket: /create-ticket
+Update Ticket Status: /change-ticket-status/{ticket_id}
+Add Payment for Client: /store-payment
+Get Specific Client's Payment info: /get-client-payment/{client_id}
+Get Specific Payment with payment id: /get-payment/{payment_id}
+Get All Payment Packages: /get-payment-package
+Get Specific Payment Package: /get-payment-package/{name}
+Add Company Details: /create-company
+Get All Company: /all-company
+Send Mail to Customer: /send-mail-customer
+Schedule Mail Send: /update-schedule/{schedule_mail_id}
+Reply Mail to Client: /reply-mail-to-customer/
+Specific Mail info with Reply mail: /get-specific-client-mail/{direct_mail_id}
+Total Direct mail: /count-direct-mail/
+Total Reply mail with specific direct mail: /count-total-reply/{direct_mail_id}
+Total Mail for Specific Client: /count-total-client-mail/{client_id}
+Create Client's Signature: /create-signature
+Get Client's Signature: /clientSignature/{client_id}
+Update Client's Signature: /update-signature/{client_id}
+Get All Client's Signature: /all-signature
+Delete Client's Signature: /delete-signature/{client_id}
+Soft Delete Customer: /customer-trash/{customer}
+Restore deleted Customer: /restore-customer/{customer_id}
+Get All Group List: /all-group
+Create New Group: /create-group
+Get Specific Group: /group/{group_id}
+Update Specific Group Info: /group-update/{group_id}
+Get All Group for Specific Client: client-all-group/{client_id}
+Delete Specific Group: /group-delete/{group_id}
+Delete All Mail for Specific Client: /remove-all-mail/{client_id}
+get all group mail by client :/client-all-group-mail/{client_id}
+specific group mail :/specific-group-mail/{group_mail_id}
+password change api for client: /client-pass-change/{client_id}
+Search with checkbox quick reply: /search-quick-reply/
+Search with checkbox no reply: /search-no-reply/
+Search with checkbox reminder: /search-reminder/
+
+
+---------------------
+Customer App:
+---------------------
+All Customer: /customers
+Specific Customer: /specific-customer/{customer_id}
+Customer Login: /customer-login
+Customer Logout: /customer-logout
+Create New Customer: /create-customer
+Update Customer's Info: /update-customer/{customer_id}
+Change Customer Status: /change-status/{customer_id}
+Delete Specific Customer: /customer-delete/{customer_id}
+Get Token for Reset Password: /reset-password
+Matching Given Token: /token-check
+Creating New password: /create-new-password/{email}
+Reply mail to Client: /reply-mail-to-client/
+Mailbox of Customer: /get-customer-mail/{customer_id}
+Specific Mail info with Reply mail: /get-specific-customer-mail/{direct_mail_id}
+Total Mail for Specific Customer: /count-total-customer-mail/{customer_id}
+Password Change Request to Admin: /password-change-request/{customer_id}
+Password Update: /change-password/{customer_id}
+Delete Specific Reply: /remove-customer-reply/{reply_mail_id}
+Delete Specific Direct Mail: /remove-customer-mail/{direct_mail_id}
+Delete All Mail for Specific Customer: /remove-all-mail/{customer_id}
+password change api for customer: /customer-pass-change/{customer_id}
+
+------------------
+Admin App:
+------------------
+Admin Login: /admin-login
+Admin Logout: /admin-logout
+Create New Admin: /admin-create
+All Admin: /all-admin
+Specific Admin: /admin-view/{admin_id}
+Delete Admin: /admin-remove/{admin_id}
+Specific Invoice View: /invoice-view/{payment_id}
+All Invoice: /invoice-all
+Invoice Table: /invoice-table/{client_id}
+All Ticket: /all-ticket
+Customer Password Change Request Approve: /customer-password-approval/{customer_id}
+Customer Password Change Request Decline: /customer-password-decline/{customer_id}
+Top customer : /top-customer
+count info : /count-mail-data/
+count info for specific Client: /count-client-mail-data/{client_id}

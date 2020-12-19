@@ -1,0 +1,149 @@
+body {
+  margin: 0;
+  font-family: "Montserrat",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App {
+  text-align: center;
+}
+
+.MuiTypography-root {
+  font-family: "Montserrat",
+    sans-serif !important;
+}
+
+.MuiTypography-body1 {
+  font-family: "Montserrat",
+    sans-serif !important;
+}
+
+.MuiOutlinedInput-input {
+  padding: 10px !important;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 0.8rem !important;
+}
+
+.MuiPaginationItem-root {
+  border-radius: 0 !important;
+  border-left: 1px solid #ddd !important;
+  margin: 0 !important;
+  font-size: 0.8rem !important;
+  font-family: "Montserrat", sans-serif !important;
+}
+
+.MuiTableCell-sizeSmall {
+  padding: 4px 4px !important;
+  text-align: center !important;
+  font-size: 0.8rem !important;
+  font-family: "Montserrat", sans-serif !important;
+  color: #444 !important;
+}
+
+.MuiTableCell-head {
+  font-size: 0.65rem !important;
+  text-transform: uppercase;
+  font-weight: 700 !important;
+  font-family: "Montserrat", sans-serif !important;
+  color: #fff !important;
+  background-color: #213F7E !important;
+}
+
+.MuiButton-containedSecondary {
+  background-color: #4195d1 !important;
+  font-family: "Montserrat", sans-serif !important;
+}
+
+.MuiButton-containedPrimary {
+  background-color: #213f7e !important;
+  font-family: "Montserrat", sans-serif !important;
+}
+
+.MuiDialog-paper {
+  border-radius: 10px !important;
+}
+
+.MuiTypography-body1 {
+  font-size: 15px !important;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 2px;
+}
+
+#contact-dropdown {
+  padding: 0.5rem 1.4rem !important;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  transform: translate3d(279px, 35px, 0px) !important;
+  top: 0px;
+  left: -85px !important;
+  will-change: transform;
+  height: auto;
+}
+
+#schedule-sent-droupdown {
+  /* background-color: rgb(65, 149, 209); */
+  padding: 0.5rem 1.4rem !important;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  transform: translate3d(20px, -40px, 0px);
+  top: 0px;
+  left: -130px !important;
+  will-change: transform;
+  height: auto;
+}
+
+.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded {
+  /* margin-left: 26rem; */
+}
+
+/* .dropdown-menu.show {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      will-change: transform;
+      transform: translate3d(137px, 35px, 0) !important;
+      background-color: #fff;
+} */
+
+/* .MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded {
+  opacity: 1;
+  transform: none;
+  min-width: 544px;
+  max-height: 224px;
+  width: 250px;
+  transition: opacity 289ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+  transform 192ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  top: 252px;
+  left: 8%;
+  transform-origin: 0px 101px;
+} */
+
+input#date-picker-dialog {
+  padding: 0.6rem;
+}
+
+label#date-picker-dialog-label {
+  margin: 0.2rem 0.6rem;
+}
